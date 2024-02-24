@@ -1,7 +1,6 @@
 {
     "name": "hct/provable",
     "description": "Package that provides the ability to create provably fair numbers and shuffles",
-    "type": "composer-plugin",
     "autoload": {
         "psr-4": {
             "Hct\\Provable\\": "src/"
