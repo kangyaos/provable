@@ -284,7 +284,7 @@ class Provable implements ProvableInterface
             srand($this->limbGenerateSeedInteger());
         }
 
-        return random_int($this->getMin(), $this->getMax());
+        return rand($this->getMin(), $this->getMax());
     }
 
     /**
