@@ -1,0 +1,21 @@
+{
+    "type": "composer-plugin",
+    "name": "hct/limb",
+    "description": "Package that provides the ability to create provably fair numbers and shuffles",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hct\\limb\\": "src/"
+        }
+    },
+    "authors": [{
+        "name": "kangyaos",
+        "email": "1255763459@qq.com"
+    }],
+    "require": {
+        "laravel/laravel": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
