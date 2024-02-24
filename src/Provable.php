@@ -90,7 +90,7 @@ class Provable implements ProvableInterface
      * @param int $min
      * @param int $max
      * @param string $type
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public static function init(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number'): ProvableInterface
     {
@@ -100,7 +100,7 @@ class Provable implements ProvableInterface
     /**
      * client seed setter.
      * @param string $clientSeed
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public function setClientSeed(string $clientSeed = null): ProvableInterface
     {
@@ -121,7 +121,7 @@ class Provable implements ProvableInterface
     /**
      * server seed setter.
      * @param string $serverSeed
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public function setServerSeed(string $serverSeed = null): ProvableInterface
     {
@@ -151,7 +151,7 @@ class Provable implements ProvableInterface
     /**
      * min setter.
      * @param int $min
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public function setMin(int $min): ProvableInterface
     {
@@ -172,7 +172,7 @@ class Provable implements ProvableInterface
     /**
      * max setter.
      * @param int $max
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public function setMax(int $max): ProvableInterface
     {
@@ -193,7 +193,7 @@ class Provable implements ProvableInterface
     /**
      * type setter.
      * @param string $type - number|shuffle
-     * @return \Gamebetr\Provable\ProvableInterface
+     * @return \Hct\Provable\ProvableInterface
      */
     public function setType(string $type): ProvableInterface
     {
