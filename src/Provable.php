@@ -331,10 +331,10 @@ class Provable implements ProvableInterface
     private function limbGenerateSeedInteger(): int
     {
         $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
-        $sum=0;
-        for($i=0;$i<$this->interceptNumber;$i++){
-            $sum+=  hexdec(substr($hmac, $i*2,$this->interceptItems))/($this->divisor**($i+1))  ;
-        }
+        $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
+            $decimalValue = hexdec(substr($hmac, $i * 2, $this->interceptItems));
+            return $carry + $decimalValue / ($this->divisor ** ($i+1));
+        }, 0);
         return intval($sum*$this->multiplier) ;
     }
 
