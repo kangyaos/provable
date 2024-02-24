@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'hct/linb',
+        'name' => 'hct/provable',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => NULL,
@@ -136,7 +136,7 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'hct/linb' => array(
+        'hct/provable' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => NULL,

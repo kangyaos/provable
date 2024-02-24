@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Gamebetr\Provable;
+namespace Hct\Provable;
 
 /**
  * Interface ProvableInterface.

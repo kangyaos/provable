@@ -1,11 +1,11 @@
 {
     "type": "composer-plugin",
-    "name": "hct/limb",
+    "name": "hct/provable",
     "description": "Package that provides the ability to create provably fair numbers and shuffles",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Hct\\limb\\": "src/"
+            "Hct\\Provable\\": "src/"
         }
     },
     "authors": [{

@@ -1,6 +1,6 @@
 <?php
 
-namespace Gamebetr\Provable;
+namespace Hct\Provable;
 
 class Provable implements ProvableInterface
 {

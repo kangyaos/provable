@@ -118,7 +118,7 @@ class ComposerStaticInit0ea9cacb85b33655e4f221ad8b49455c
         ),
         'H' => 
         array (
-            'Hct\\Linb\\' => 9,
+            'Hct\\Provable\\' => 9,
         ),
         'G' => 
         array (
@@ -370,7 +370,7 @@ class ComposerStaticInit0ea9cacb85b33655e4f221ad8b49455c
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
-        'Hct\\Linb\\' => 
+        'Hct\\Provable\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
