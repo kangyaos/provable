@@ -279,12 +279,7 @@ class Provable implements ProvableInterface
         if ($maximumNumber !== null) {
             $this->setMax($maximumNumber);
         }
-        if (! $this->random_seed_set) {
-            $this->random_seed_set = true;
-            srand($this->limbGenerateSeedInteger());
-        }
-
-        return rand($this->getMin(), $this->getMax());
+        return $this->limbGenerateSeedInteger();
     }
 
     /**
@@ -332,10 +327,10 @@ class Provable implements ProvableInterface
     {
         $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
         $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
-            $decimalValue = hexdec(substr($hmac, $i * 2, $this->interceptItems));
+            $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
             return $carry + $decimalValue / ($this->divisor ** ($i+1));
         }, 0);
-        return intval($sum*$this->multiplier) ;
+        return  (int)($sum*$this->multiplier) ;
     }
 
     /**
