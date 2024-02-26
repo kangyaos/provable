@@ -23,7 +23,7 @@ $max = 52;
 $type = 'shuffle';
 
 // instanciate the provable class
-$provable = new Provable($clientSeed, $serverSeed, $min, $max, $type);
+$provable = new LimbProvable($clientSeed, $serverSeed, $min, $max, $type);
 
 // get the results
 print $provable->limbResults();
@@ -41,8 +41,8 @@ The class constructor takes the optional parameters, clientSeed, serverSeed, min
 The init method is just a static constructor. It allows you to do the following:
 
 ```
-$provable = Gamebetr\Provable::init()
-// returns an instance of Gamebetr\Provable
+$provable = Hct\LimbProvable::init()
+// returns an instance of Hct\LimbProvable
 ```
 
 ### setClientSeed(string $clientSeed = null)
