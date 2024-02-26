@@ -74,13 +74,13 @@ class LimbProvable implements LimbProvableInterface
      * @param int $max
      * @param string $type
      */
-    public function __construct(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number')
+    public function __construct(string $clientSeed = null, string $serverSeed = null, ?int $min = 0, ?int $max = 0, ?string $type = 'number')
     {
         $this->setClientSeed($clientSeed);
         $this->setServerSeed($serverSeed);
-        $this->setMin($min);
-        $this->setMax($max);
-        $this->setType($type);
+        $this->setMin($min ?? 0);
+        $this->setMax($max ?? 0);
+        $this->setType($type ??  'number');
     }
 
     /**
@@ -90,9 +90,9 @@ class LimbProvable implements LimbProvableInterface
      * @param int $min
      * @param int $max
      * @param string $type
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public static function init(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number'): ProvableInterface
+    public static function init(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number'): LimbProvableInterface
     {
         return new static($clientSeed, $serverSeed, $min, $max, $type);
     }
@@ -100,9 +100,9 @@ class LimbProvable implements LimbProvableInterface
     /**
      * client seed setter.
      * @param string $clientSeed
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public function setClientSeed(string $clientSeed = null): ProvableInterface
+    public function setClientSeed(string $clientSeed = null): LimbProvableInterface
     {
         $this->clientSeed = $clientSeed ?? $this->generateRandomSeed();
 
@@ -121,9 +121,9 @@ class LimbProvable implements LimbProvableInterface
     /**
      * server seed setter.
      * @param string $serverSeed
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public function setServerSeed(string $serverSeed = null): ProvableInterface
+    public function setServerSeed(string $serverSeed = null): LimbProvableInterface
     {
         $this->serverSeed = $serverSeed ?? $this->generateRandomSeed();
 
@@ -151,9 +151,9 @@ class LimbProvable implements LimbProvableInterface
     /**
      * min setter.
      * @param int $min
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public function setMin(int $min): ProvableInterface
+    public function setMin(int $min): LimbProvableInterface
     {
         $this->min = $min;
 
@@ -172,9 +172,9 @@ class LimbProvable implements LimbProvableInterface
     /**
      * max setter.
      * @param int $max
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public function setMax(int $max): ProvableInterface
+    public function setMax(int $max): LimbProvableInterface
     {
         $this->max = $max;
 
@@ -193,9 +193,9 @@ class LimbProvable implements LimbProvableInterface
     /**
      * type setter.
      * @param string $type - number|shuffle
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      */
-    public function setType(string $type): ProvableInterface
+    public function setType(string $type): LimbProvableInterface
     {
         if (! in_array($type, ['number', 'shuffle'])) {
             throw new \Exception("Invalid type $type", 400);
@@ -347,7 +347,7 @@ class LimbProvable implements LimbProvableInterface
      * Reset the class to start the results over.
      * @return self
      */
-    public function reset(): ProvableInterface
+    public function reset(): LimbProvableInterface
     {
         $this->random_seed_set = false;
 

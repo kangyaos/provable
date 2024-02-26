@@ -103,7 +103,7 @@ interface LimbProvableInterface
      * @param string $clientSeed
      *   The client seed to set.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function setClientSeed(string $clientSeed = null): self;
@@ -114,7 +114,7 @@ interface LimbProvableInterface
      * @param int $max
      *   The maximum allowed random number value.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function setMax(int $max): self;
@@ -125,7 +125,7 @@ interface LimbProvableInterface
      * @param int $min
      *   The minimum allowed random number.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function setMin(int $min): self;
@@ -136,7 +136,7 @@ interface LimbProvableInterface
      * @param string $serverSeed
      *   The server seed to set.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function setServerSeed(string $serverSeed = null): self;
@@ -147,7 +147,7 @@ interface LimbProvableInterface
      * @param string $type
      *   The provable type to set. One of number or shuffle.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function setType(string $type): self;
@@ -170,7 +170,7 @@ interface LimbProvableInterface
     /**
      * Reset the provable instance in order to start the results over from the top.
      *
-     * @return \Hct\LimbProvable\ProvableInterface
+     * @return \Hct\LimbProvable\LimbProvableInterface
      *   An instance of this object.
      */
     public function reset(): self;
