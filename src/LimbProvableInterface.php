@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Hct\Provable;
+namespace Hct\LimbProvable;
 
 /**
  * Interface ProvableInterface.
  */
-interface ProvableInterface
+interface LimbProvableInterface
 {
     /**
      * Get the client seed.
@@ -103,7 +103,7 @@ interface ProvableInterface
      * @param string $clientSeed
      *   The client seed to set.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function setClientSeed(string $clientSeed = null): self;
@@ -114,7 +114,7 @@ interface ProvableInterface
      * @param int $max
      *   The maximum allowed random number value.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function setMax(int $max): self;
@@ -125,7 +125,7 @@ interface ProvableInterface
      * @param int $min
      *   The minimum allowed random number.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function setMin(int $min): self;
@@ -136,7 +136,7 @@ interface ProvableInterface
      * @param string $serverSeed
      *   The server seed to set.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function setServerSeed(string $serverSeed = null): self;
@@ -147,7 +147,7 @@ interface ProvableInterface
      * @param string $type
      *   The provable type to set. One of number or shuffle.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function setType(string $type): self;
@@ -170,7 +170,7 @@ interface ProvableInterface
     /**
      * Reset the provable instance in order to start the results over from the top.
      *
-     * @return \Hct\Provable\ProvableInterface
+     * @return \Hct\LimbProvable\ProvableInterface
      *   An instance of this object.
      */
     public function reset(): self;
