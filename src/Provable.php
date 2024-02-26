@@ -328,7 +328,7 @@ class Provable implements ProvableInterface
         $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
         $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
-            return $carry + $decimalValue / ($this->divisor ** ($i+1));
+            return $carry +  number_format($decimalValue / ($this->divisor ** ($i+1)),12);
         }, 0);
         return  (int)($sum*$this->multiplier) ;
     }
