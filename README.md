@@ -6,7 +6,7 @@ This package provides the means to create provibly fair random numbers and prova
 
 via composer:
 ```
-composer require hct/linb-provable
+composer require hct/limb-provable
 ```
 
 ## Basic Useage
