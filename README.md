@@ -12,18 +12,16 @@ composer require hct/linb-provable
 ## Basic Useage
 
 ```php
-use Hct\LimbProvable\LimbProvable;
+use Hct\Provable\LimboProvable;
 
 
 // set some vars
 $clientSeed = 'your client seed here';
 $serverSeed = 'your server seed here';
-$min = 1;
-$max = 52;
-$type = 'shuffle';
+
 
 // instanciate the provable class
-$provable = new LimbProvable($clientSeed, $serverSeed, $min, $max, $type);
+$provable = new LimbProvable($clientSeed, $serverSeed);
 
 // get the results
 print $provable->limbResults();
