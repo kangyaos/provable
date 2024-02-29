@@ -2,7 +2,7 @@
 
 namespace Hct\Provable;
 
-class LimbProvable implements LimbProvableInterface
+class LimboProvable implements LimboProvableInterface
 {
     /**
      * client seed.
@@ -107,10 +107,29 @@ class LimbProvable implements LimbProvableInterface
     }
 
     /**
+     * generate a random seed.
+     * @var int
+     * @return string
+     */
+    private function generateRandomSeed(): string
+    {
+        return bin2hex(openssl_random_pseudo_bytes(32));
+    }
+
+    /**
+     * returns a random number within a range.
+     * @return int
+     */
+    public function number() :int
+    {
+        return generateRandomInteger();
+    }
+
+    /**
      * generate a random integer from server seed and client seed.
      * @return int
      */
-    private function limboGenerateRandomInteger(): int
+    private function generateRandomInteger(): int
     {
         $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
         $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {

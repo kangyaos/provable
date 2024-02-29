@@ -26,13 +26,12 @@ interface DiceRollingProvable
     public function getServerSeed(): string;
 
 
-
-     /**
-     * Returns a random number .
+  /**
+     * Returns a random number from server seed and client seed.
      *
      * @return int
-     *   The randomly generated  a random integer from server seed and client seed.
+     *   The randomly generated number.
      */
-    public function limboGenerateRandomInteger(): int;
+    public function number(): int;
 
 }
