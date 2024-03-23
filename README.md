@@ -6,13 +6,13 @@ This package provides the means to create provibly fair random numbers and prova
 
 via composer:
 ```
-composer require hct/limb-provable
+composer require app/provable
 ```
 
 ## Basic Useage
 
 ```php
-use Hct\Provable\LimboProvable;
+use App\Provable\LimboProvable;
 
 
 // set some vars

@@ -120,7 +120,7 @@ class ComposerStaticInitd59a5cf0b143f7a3661e0e38e9c1d846
         ),
         'H' => 
         array (
-            'Hct\\LimbProvable\\' => 13,
+            'App\\LimbProvable\\' => 13,
         ),
         'G' => 
         array (
@@ -389,7 +389,7 @@ class ComposerStaticInitd59a5cf0b143f7a3661e0e38e9c1d846
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
-        'Hct\\LimbProvable\\' => 
+        'App\\LimbProvable\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

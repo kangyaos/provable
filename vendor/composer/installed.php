@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'hct/limprovable',
+        'name' => 'app/limprovable',
         'pretty_version' => '1.0.0+no-version-set',
         'version' => '1.0.0.0',
         'reference' => NULL,
@@ -136,7 +136,7 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'hct/limb-provable' => array(
+        'app/limb-provable' => array(
             'pretty_version' => '1.0.0+no-version-set',
             'version' => '1.0.0.0',
             'reference' => NULL,

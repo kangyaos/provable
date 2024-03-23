@@ -1,9 +1,9 @@
 {
-    "name": "hct/provable",
+    "name": "app/provable",
     "description": "Package that provides the ability to create provably fair numbers and shuffles",
     "autoload": {
         "psr-4": {
-            "Hct\\Provable\\": "src/"
+            "App\\Provable\\": "src/"
         }
     },
     "authors": [{
