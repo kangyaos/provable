@@ -1,104 +1,100 @@
 <?php
 
-namespace Hct\Provable;
+namespace App\Provable;
 
 class DiceRollingProvable implements DiceRollingProvableInterface
 {
     /**
-     * client seed.
+     * Client seed.
      * @var string
      */
     private $clientSeed;
 
     /**
-     * server seed.
+     * Server seed.
      * @var string
      */
     private $serverSeed;
 
-   /**
-     * interceptNumber.
+    /**
+     * Intercept number.
      * @var int
      */
-    private $interceptNumber=4;
+    private $interceptNumber = 4;
 
     /**
-     * interceptItems.
+     * Intercept items.
      * @var int
      */
-    private $interceptItems=2;
-
-     /**
-     * multiplier.
-     * @var int
-     */
-    private $multiplier=6;
+    private $interceptItems = 2;
 
     /**
-     * divisor.
+     * Multiplier.
      * @var int
      */
-    private $divisor=256;
-    
-
+    private $multiplier = 6;
 
     /**
-     * class constructor.
-     * @param string $clientSeed
-     * @param string $serverSeed
+     * Divisor.
+     * @var int
      */
-    public function __construct(string $clientSeed = null, string $serverSeed = null)
+    private $divisor = 256;
+
+    /**
+     * Class constructor.
+     * @param string|null $clientSeed
+     * @param string|null $serverSeed
+     */
+    public function __construct(?string $clientSeed = null, ?string $serverSeed = null)
     {
         $this->setClientSeed($clientSeed);
         $this->setServerSeed($serverSeed);
     }
 
     /**
-     * static constructor.
-     * @param string $clientSeed
-     * @param string $serverSeed
-     * @return \Hct\LimboProvable\DiceRollingProvableInterface
+     * Static constructor.
+     * @param string|null $clientSeed
+     * @param string|null $serverSeed
+     * @return \App\LimboProvable\DiceRollingProvableInterface
      */
-    public static function init(string $clientSeed = null, string $serverSeed = null): DiceRollingProvableInterface
+    public static function init(?string $clientSeed = null, ?string $serverSeed = null): DiceRollingProvableInterface
     {
         return new static($clientSeed, $serverSeed);
     }
 
-   /**
-     * client seed setter.
-     * @param string $clientSeed
-     * @return \Hct\Provable\DiceRollingProvableInterface
+    /**
+     * Client seed setter.
+     * @param string|null $clientSeed
+     * @return \App\Provable\DiceRollingProvableInterface
      */
-    public function setClientSeed(string $clientSeed = null): DiceRollingProvableInterface
+    public function setClientSeed(?string $clientSeed = null): DiceRollingProvableInterface
     {
         $this->clientSeed = $clientSeed ?? $this->generateRandomSeed();
-
         return $this;
     }
 
     /**
-     * client seed getter.
+     * Client seed getter.
      * @return string
      */
-    public function getClientSeed():  string
+    public function getClientSeed(): string
     {
         return $this->clientSeed;
     }
 
     /**
-     * server seed setter.
-     * @param string $serverSeed
-     * @return \Hct\Provable\DiceRollingProvableInterface
+     * Server seed setter.
+     * @param string|null $serverSeed
+     * @return \App\Provable\DiceRollingProvableInterface
      */
-    public function setServerSeed(string $serverSeed = null): DiceRollingProvableInterface
+    public function setServerSeed(?string $serverSeed = null): DiceRollingProvableInterface
     {
         $this->serverSeed = $serverSeed ?? $this->generateRandomSeed();
-
         return $this;
     }
 
     /**
-     * server seed getter.
+     * Server seed getter.
      * @return string
      */
     public function getServerSeed(): string
@@ -106,9 +102,8 @@ class DiceRollingProvable implements DiceRollingProvableInterface
         return $this->serverSeed;
     }
 
-     /**
-     * generate a random seed.
-     * @var int
+    /**
+     * Generate a random seed.
      * @return string
      */
     private function generateRandomSeed(): string
@@ -117,17 +112,25 @@ class DiceRollingProvable implements DiceRollingProvableInterface
     }
 
     /**
-     * returns a random number within a range.
-     * @return int
+     * Hashed server seed getter.
+     * @return string
      */
-    public function number() :int
+    public function getHashedServerSeed(): string
     {
-        return generateRandomInteger();
+        return hash('sha256', $this->getServerSeed());
     }
 
+    /**
+     * Returns a random number within a range.
+     * @return int
+     */
+    public function number(): int
+    {
+        return $this->generateRandomInteger();
+    }
 
     /**
-     * generate a random integer from server seed and client seed.
+     * Generate a random integer from server seed and client seed.
      * @return int
      */
     private function generateRandomInteger(): int
@@ -135,12 +138,12 @@ class DiceRollingProvable implements DiceRollingProvableInterface
         $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
         $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
-            return $carry +  number_format($decimalValue / ($this->divisor ** ($i+1)),12);
+            return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
 
-        $random= (int)($sum*$this->multiplier);
-        
-        //change 0-5 to 1-6
-        return   $random+1 ;
+        $random = (int) ($sum * $this->multiplier);
+
+        // Change 0-5 to 1-6
+        return $random + 1;
     }
 }

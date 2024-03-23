@@ -21,27 +21,18 @@ $serverSeed = 'your server seed here';
 
 
 // instanciate the provable class
-$provable = new LimbProvable($clientSeed, $serverSeed);
+$provable = new LimboProvable($clientSeed, $serverSeed);
 
 // get the results
-print $provable->limbResults();
-// prints [6,21,19,13,41,28,40,43,2,39,5,24,18,52,46,26,20,7,29,38,23,37,30,31,33,44,22,16,35,48,25,14,45,27,11,8,17,36,51,4,42,15,49,32,3,9,1,47,10,34,50,12]
+print $provable->number();
 ```
 
 ## Methods
 
-### __construct(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number')
+### __construct(string $clientSeed = null, string $serverSeed = null)
 
 The class constructor takes the optional parameters, clientSeed, serverSeed, min, max, and type. If clientSeed or serverSeed are not provided, it will generate random seeds automatically. The min and max parameters are the minimum and maximum values of the random number or shuffle. Type is either `number` or `shuffle`.
 
-### static init(string $clientSeed = null, string $serverSeed = null, int $min = 0, int $max = 0, string $type = 'number')
-
-The init method is just a static constructor. It allows you to do the following:
-
-```
-$provable = Hct\LimbProvable::init()
-// returns an instance of Hct\LimbProvable
-```
 
 ### setClientSeed(string $clientSeed = null)
 
@@ -61,43 +52,10 @@ This returns the current server seed.
 
 ### getHashedServerSeed()
 
-This returns the hashed version of the server seed.
-
-### setMin(int $min)
-
-This sets the minimum value property. The Provable instance is returned allowing you to chain commands.
-
-### getMin()
-
-This returns the current minimum value property.
-
-### setMax(int $max)
-
-This sets the maximum value property. The Provable instance is returned allowing you to chain commands.
-
-### getMax()
-
-This returns the current maximum value property.
-
-### setType(string $type)
-
-This sets the type property. Allowed values are number and shuffle. The Provable instance is returned allowing you to chain commands.
-
-### getType()
-
-This returns the current type property.
-
-### limbResults()
-
 This calculates the random number or shuffle and returns it.
 
-### limbNumber(int $minimumNumber = null, int $maximumNumber = null)
+### number()
 
-This generates a random number between $minimumNumber and $maximumNumber. If no values are provided, it will use the $min and $max properties of the object.
-
-### shuffle(int $minimumNumber = null, int $maximumNumber = null)
-
-This generates a random shuffle of numbers between $minimumNumber and $maximumNumber. If no values are provided, it will use the $min and $max properties of the object.
 
 
 

@@ -2,7 +2,7 @@
 
 namespace App\Provable;
 
-class LimboProvable implements LimboProvableInterface
+class DiceRollProvable implements DiceRollProvableInterface
 {
     /**
      * Client seed.
@@ -32,14 +32,14 @@ class LimboProvable implements LimboProvableInterface
      * Multiplier.
      * @var int
      */
-    private $multiplier = 2 ** 24;
+    private $multiplier = 10001;
 
     /**
      * Divisor.
      * @var int
      */
     private $divisor = 256;
-    
+
     /**
      * Class constructor.
      * @param string|null $clientSeed
@@ -55,9 +55,9 @@ class LimboProvable implements LimboProvableInterface
      * Static constructor.
      * @param string|null $clientSeed
      * @param string|null $serverSeed
-     * @return \App\LimboProvable\LimboProvableInterface
+     * @return \App\LimboProvable\DiceRollProvableInterface
      */
-    public static function init(?string $clientSeed = null, ?string $serverSeed = null): LimboProvableInterface
+    public static function init(?string $clientSeed = null, ?string $serverSeed = null): DiceRollProvableInterface
     {
         return new static($clientSeed, $serverSeed);
     }
@@ -65,9 +65,9 @@ class LimboProvable implements LimboProvableInterface
     /**
      * Client seed setter.
      * @param string|null $clientSeed
-     * @return \App\Provable\LimboProvableInterface
+     * @return \App\Provable\DiceRollProvableInterface
      */
-    public function setClientSeed(?string $clientSeed = null): LimboProvableInterface
+    public function setClientSeed(?string $clientSeed = null): DiceRollProvableInterface
     {
         $this->clientSeed = $clientSeed ?? $this->generateRandomSeed();
         return $this;
@@ -85,9 +85,9 @@ class LimboProvable implements LimboProvableInterface
     /**
      * Server seed setter.
      * @param string|null $serverSeed
-     * @return \App\Provable\LimboProvableInterface
+     * @return \App\Provable\DiceRollProvableInterface
      */
-    public function setServerSeed(?string $serverSeed = null): LimboProvableInterface
+    public function setServerSeed(?string $serverSeed = null): DiceRollProvableInterface
     {
         $this->serverSeed = $serverSeed ?? $this->generateRandomSeed();
         return $this;
@@ -140,6 +140,10 @@ class LimboProvable implements LimboProvableInterface
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
-        return (int)($sum * $this->multiplier);
+
+        $random = (int) ($sum * $this->multiplier);
+
+      
+        return $random;
     }
 }

@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Provable;
 
 /**
- * Interface DiceRollingProvableInterface.
+ * Interface ShuffleProvableInterface.
  */
-interface DiceRollingProvableInterface
+interface ShuffleProvableInterface
 {
     /**
      * Get the client seed.
@@ -16,7 +16,7 @@ interface DiceRollingProvableInterface
      *   The current client seed.
      */
     public function getClientSeed(): string;
-    
+
     /**
      * Get the hashed version of the server seed.
      *
@@ -33,12 +33,27 @@ interface DiceRollingProvableInterface
      */
     public function getServerSeed(): string;
 
-    /**
-     * Returns a random number from server seed and client seed.
+       /**
+     * Get the max.
      *
      * @return int
-     *   The randomly generated number.
+     *   The current max.
      */
-    public function number(): int;
+    public function getMax(): int;
 
+
+       /**
+     * Get the min.
+     *
+     * @return int
+     *   The current min.
+     */
+    public function getMin(): int;
+
+    /**
+     * Shuffle the array of integers using HMAC-based shuffling algorithm
+     *
+     * @return array The shuffled array with x and y coordinates
+     */
+    public function result(): array;
 }

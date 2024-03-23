@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Provable;
 
 /**
- * Interface DiceRollingProvableInterface.
+ * Interface KPSProvableInterface.
  */
-interface DiceRollingProvableInterface
+interface KPSProvableInterface
 {
     /**
      * Get the client seed.
@@ -34,7 +34,7 @@ interface DiceRollingProvableInterface
     public function getServerSeed(): string;
 
     /**
-     * Returns a random number from server seed and client seed.
+     * Returns a random number of 1-3 based on serverSeed and clientSeed.
      *
      * @return int
      *   The randomly generated number.

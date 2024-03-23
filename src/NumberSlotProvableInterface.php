@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Provable;
 
 /**
- * Interface DiceRollingProvableInterface.
+ * Interface NumberSlotProvableInterface.
  */
-interface DiceRollingProvableInterface
+interface NumberSlotProvableInterface
 {
     /**
      * Get the client seed.
@@ -16,7 +16,7 @@ interface DiceRollingProvableInterface
      *   The current client seed.
      */
     public function getClientSeed(): string;
-    
+
     /**
      * Get the hashed version of the server seed.
      *
@@ -34,11 +34,10 @@ interface DiceRollingProvableInterface
     public function getServerSeed(): string;
 
     /**
-     * Returns a random number from server seed and client seed.
+     *  Generate 3-digit 0-9 random numbers.
      *
      * @return int
-     *   The randomly generated number.
+     *   The randomly generated  integer array.
      */
-    public function number(): int;
-
+    public function result(): array;
 }

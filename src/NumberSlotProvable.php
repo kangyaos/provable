@@ -2,7 +2,7 @@
 
 namespace App\Provable;
 
-class LimboProvable implements LimboProvableInterface
+class NumberSlotProvable implements NumberSlotProvableInterface
 {
     /**
      * Client seed.
@@ -20,7 +20,7 @@ class LimboProvable implements LimboProvableInterface
      * Intercept number.
      * @var int
      */
-    private $interceptNumber = 4;
+    private $interceptNumber =3;
 
     /**
      * Intercept items.
@@ -32,7 +32,7 @@ class LimboProvable implements LimboProvableInterface
      * Multiplier.
      * @var int
      */
-    private $multiplier = 2 ** 24;
+    private $multiplier = 10;
 
     /**
      * Divisor.
@@ -55,9 +55,9 @@ class LimboProvable implements LimboProvableInterface
      * Static constructor.
      * @param string|null $clientSeed
      * @param string|null $serverSeed
-     * @return \App\LimboProvable\LimboProvableInterface
+     * @return \App\NumberSlotProvable\NumberSlotProvableInterface
      */
-    public static function init(?string $clientSeed = null, ?string $serverSeed = null): LimboProvableInterface
+    public static function init(?string $clientSeed = null, ?string $serverSeed = null): NumberSlotProvableInterface
     {
         return new static($clientSeed, $serverSeed);
     }
@@ -65,9 +65,9 @@ class LimboProvable implements LimboProvableInterface
     /**
      * Client seed setter.
      * @param string|null $clientSeed
-     * @return \App\Provable\LimboProvableInterface
+     * @return \App\Provable\NumberSlotProvableInterface
      */
-    public function setClientSeed(?string $clientSeed = null): LimboProvableInterface
+    public function setClientSeed(?string $clientSeed = null): NumberSlotProvableInterface
     {
         $this->clientSeed = $clientSeed ?? $this->generateRandomSeed();
         return $this;
@@ -85,9 +85,9 @@ class LimboProvable implements LimboProvableInterface
     /**
      * Server seed setter.
      * @param string|null $serverSeed
-     * @return \App\Provable\LimboProvableInterface
+     * @return \App\Provable\NumberSlotProvableInterface
      */
-    public function setServerSeed(?string $serverSeed = null): LimboProvableInterface
+    public function setServerSeed(?string $serverSeed = null): NumberSlotProvableInterface
     {
         $this->serverSeed = $serverSeed ?? $this->generateRandomSeed();
         return $this;
@@ -121,25 +121,39 @@ class LimboProvable implements LimboProvableInterface
     }
 
     /**
-     * Returns a random number within a range.
-     * @return int
+     * random integer array .
+     * @return array
      */
-    public function number(): int
+    public function result(): array
     {
-        return $this->generateRandomInteger();
+        return $this->generateRandomIntegerArray();
     }
 
     /**
-     * Generate a random integer from server seed and client seed.
-     * @return int
+     * Generate an array of random integers
+     *
+     * @return array The array of random integers
      */
-    private function generateRandomInteger(): int
+    private function generateRandomIntegerArray(): array
     {
-        $hmac = hash_hmac('sha256', $this->getServerSeed(), $this->getClientSeed());
-        $sum = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
+        // Generate HMAC using provided key and data
+        $hmac = hash_hmac('sha256', $key, $data);
+        
+        // Use array_reduce to generate an array of random integers
+        $result = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {
+            // Extract a portion of HMAC and convert it to decimal value
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
-            return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
-        }, 0);
-        return (int)($sum * $this->multiplier);
+            
+            // Calculate random integer using divisor and multiplier
+            $decimalValue = $decimalValue / $this->divisor;
+            $random = (int) ($decimalValue * $this->multiplier);
+            
+            // Add the random integer to the result array
+            $carry[] = $random;
+            return $carry;
+        }, []);
+        
+        // Return the resulting array of random integers
+        return $result;
     }
 }

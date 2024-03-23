@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Hct\Provable;
+namespace App\Provable;
 
 /**
- * Interface ProvableInterface.
+ * Interface LimboProvableInterface.
  */
 interface LimboProvableInterface
 {
@@ -23,8 +23,16 @@ interface LimboProvableInterface
      * @return string
      *   The hashed version of the current server seed.
      */
+    public function getHashedServerSeed(): string;
+
+    /**
+     * Get the server seed.
+     *
+     * @return string
+     *   The current server seed.
+     */
     public function getServerSeed(): string;
-     
+
     /**
      * Returns a random number from server seed and client seed.
      *
@@ -32,5 +40,4 @@ interface LimboProvableInterface
      *   The randomly generated number.
      */
     public function number(): int;
-
 }
