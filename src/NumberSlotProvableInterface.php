@@ -34,10 +34,10 @@ interface NumberSlotProvableInterface
     public function getServerSeed(): string;
 
     /**
-     *  Generate 3-digit 0-9 random numbers.
+     * Generate 3-digit 0-9 random numbers.
      *
      * @return int
-     *   The randomly generated  integer array.
+     *   The randomly generated integer array.
      */
     public function result(): array;
 }

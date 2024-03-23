@@ -6,7 +6,6 @@ namespace App\Provable;
 
 /*
 * Class ShuffleProvable   
-
 */
 class ShuffleProvable implements ShuffleProvableInterface
 {
@@ -22,7 +21,7 @@ class ShuffleProvable implements ShuffleProvableInterface
      */
     private $serverSeed;
 
-     /**
+    /**
      * min default 0.
      * @var int
      */
@@ -138,7 +137,7 @@ class ShuffleProvable implements ShuffleProvableInterface
     }
 
 
-     /**
+    /**
      * max setter.
      * @param int|null $max
      * @return \App\Provable\ShuffleProvableInterface

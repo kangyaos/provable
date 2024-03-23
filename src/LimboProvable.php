@@ -140,6 +140,7 @@ class LimboProvable implements LimboProvableInterface
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
+        
         return (int)($sum * $this->multiplier);
     }
 }

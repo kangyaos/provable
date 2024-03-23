@@ -121,7 +121,7 @@ class DiceRollProvable implements DiceRollProvableInterface
     }
 
     /**
-     * Returns a random number within a range.
+     * Returns a random number.
      * @return int
      */
     public function number(): int
@@ -130,7 +130,7 @@ class DiceRollProvable implements DiceRollProvableInterface
     }
 
     /**
-     * Generate a random integer from server seed and client seed.
+     * Generate a random number of 0-10000 based on serverSeed and clientSeed.
      * @return int
      */
     private function generateRandomInteger(): int
@@ -140,10 +140,9 @@ class DiceRollProvable implements DiceRollProvableInterface
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
-
+        
+        //Generate random numbers from 0 to 10000
         $random = (int) ($sum * $this->multiplier);
-
-      
         return $random;
     }
 }

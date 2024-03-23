@@ -33,7 +33,7 @@ interface ShuffleProvableInterface
      */
     public function getServerSeed(): string;
 
-       /**
+    /**
      * Get the max.
      *
      * @return int
@@ -41,8 +41,7 @@ interface ShuffleProvableInterface
      */
     public function getMax(): int;
 
-
-       /**
+    /**
      * Get the min.
      *
      * @return int

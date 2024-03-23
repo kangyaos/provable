@@ -130,7 +130,7 @@ class DiceRollingProvable implements DiceRollingProvableInterface
     }
 
     /**
-     * Generate a random integer from server seed and client seed.
+     * Generate a random number of 1-6 based on serverSeed and clientSeed.
      * @return int
      */
     private function generateRandomInteger(): int
@@ -141,6 +141,7 @@ class DiceRollingProvable implements DiceRollingProvableInterface
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
 
+        //Generate random numbers from 0 to 5
         $random = (int) ($sum * $this->multiplier);
 
         // Change 0-5 to 1-6

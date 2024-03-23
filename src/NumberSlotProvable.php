@@ -20,7 +20,7 @@ class NumberSlotProvable implements NumberSlotProvableInterface
      * Intercept number.
      * @var int
      */
-    private $interceptNumber =3;
+    private $interceptNumber = 3;
 
     /**
      * Intercept items.
@@ -137,7 +137,7 @@ class NumberSlotProvable implements NumberSlotProvableInterface
     private function generateRandomIntegerArray(): array
     {
         // Generate HMAC using provided key and data
-        $hmac = hash_hmac('sha256', $key, $data);
+        $hmac = hash_hmac('sha256', $this->serverSeed, $this->clientSeed);
         
         // Use array_reduce to generate an array of random integers
         $result = array_reduce(range(0, $this->interceptNumber - 1), function ($carry, $i) use ($hmac) {

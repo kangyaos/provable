@@ -121,7 +121,7 @@ class CoinFupProvable implements CoinFupProvableInterface
     }
 
     /**
-     * Returns a random number within a range.
+     * Returns a random number .
      * @return int
      */
     public function number(): int
@@ -130,7 +130,7 @@ class CoinFupProvable implements CoinFupProvableInterface
     }
 
     /**
-     * Generate a random integer from server seed and client seed.
+     * Generate a random number of 1-2 based on serverSeed and clientSeed.
      * @return int
      */
     private function generateRandomInteger(): int
@@ -141,6 +141,7 @@ class CoinFupProvable implements CoinFupProvableInterface
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
 
+        //Generate random numbers from 0 to 1
         $random = (int) ($sum * $this->multiplier);
 
         // Change 0-1 to 1-2

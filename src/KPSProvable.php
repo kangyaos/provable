@@ -130,7 +130,7 @@ class KPSProvable implements KPSProvableInterface
     }
 
     /**
-     * Generate a random integer from server seed and client seed.
+     * Generate a random number of 1-3 based on serverSeed and clientSeed.
      * @return int
      */
     private function generateRandomInteger(): int
@@ -140,7 +140,8 @@ class KPSProvable implements KPSProvableInterface
             $decimalValue = hexdec(substr($hmac, $i * $this->interceptItems, $this->interceptItems));
             return $carry + number_format($decimalValue / ($this->divisor ** ($i + 1)), 12);
         }, 0);
-
+        
+        //Generate random numbers from 0 to 2
         $random = (int) ($sum * $this->multiplier);
 
         // Change 0-2 to 1-3
